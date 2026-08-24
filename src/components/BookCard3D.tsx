@@ -42,35 +42,61 @@ export const BOOKS_DATA: BookData[] = [
     subtitle: "En cada boulevard de la vida, elijo caminar a tu lado.",
     leftPageHeader: "Boulevard de Recuerdos",
     secretNote:
-      "Pastelito, cada vez que leas un libro y sientas mariposas o llores con el final, recuerda que aquí estoy yo para escucharte contarme cada detalle. Eres mi persona favorita en todo el universo.",
+      "Pastelito, cada vez que leas un libro y sientas mariposas o llores con el final, recuerda que aqui estoy yo para escucharte contarme cada detalle. Eres mi persona favorita en todo el universo.",
     quotes: [
       {
         text: "Rompe mi corazón, pero no te vayas, nunca lo hagas.",
-        author: "Flor M. Salvador, Boulevard",
-      },
-      {
-        text: "¿Quién dijo que después de la tormenta hay sol, cuando puede haber un rayo?",
-        author: "Flor M. Salvador, Boulevard",
+        author: "Luke Howland, Boulevard",
       },
       {
         text: "Sé que estoy jodido porque no me enamoré de sus virtudes, me enamoré de sus defectos.",
-        author: "Flor M. Salvador, Boulevard",
-      },
-      {
-        text: "Al final de cuentas todos terminamos igual, en un boulevard de los sueños rotos.",
-        author: "Flor M. Salvador, Boulevard",
-      },
-      {
-        text: "Fuimos perfectamente imperfectos... Las reglas de las matemáticas dicen que negativo por negativo iguala a positivo. Entonces, ¿qué fuimos Luke y yo?",
-        author: "Flor M. Salvador, Boulevard",
-      },
-      {
-        text: "Cuando un sueño muere, alimenta el boulevard.",
-        author: "Flor M. Salvador, Boulevard",
+        author: "Luke Howland, Boulevard",
       },
       {
         text: "Él era oscuridad. Ella un rayo de sol. Y, sin embargo, juntos crearon su propio refugio.",
         author: "Flor M. Salvador, Boulevard",
+      },
+      {
+        text: "Fuimos perfectamente imperfectos... Las reglas de las matemáticas dicen que negativo por negativo iguala a positivo. Entonces, ¿qué fuimos Luke y yo?",
+        author: "Hasley Weigel, Boulevard",
+      },
+      {
+        text: "De todos los libros del mundo y de todas las historias posibles, tú siempre serás mi favorita.",
+        author: "Flor M. Salvador, Boulevard",
+      },
+    ],
+  },
+  {
+    id: "despues-de-el",
+    title: "DESPUES DE EL",
+    author: "Flor M. Salvador",
+    coverGradient: "from-[#161233] via-[#281d42] to-[#40203d]",
+    ribbonGradient: "from-purple-700 via-pink-600 to-rose-800",
+    borderColor: "border-purple-400/40",
+    subtitle: "El amor verdadero trasciende el tiempo y se convierte en luz.",
+    leftPageHeader: "Un Nuevo Comienzo",
+    secretNote:
+      "Pastelito, en esta segunda parte Hasley aprendio que volver a empezar es el mayor acto de amor. Gracias por ser mi nuevo amanecer cada dia.",
+    quotes: [
+      {
+        text: "Déjame ser el sosiego de tus miedos.",
+        author: "Flor M. Salvador, Después de Él",
+      },
+      {
+        text: "El primer amor no se olvida, solo se aprende a amar con mayor profundidad y ternura.",
+        author: "Flor M. Salvador, Después de Él",
+      },
+      {
+        text: "El secreto de volver a empezar es darte otra oportunidad para ser feliz.",
+        author: "Flor M. Salvador, Después de Él",
+      },
+      {
+        text: "Aprender a sanar a tu lado es el milagro más hermoso que la vida me regaló.",
+        author: "Flor M. Salvador, Después de Él",
+      },
+      {
+        text: "Siempre habrá una parte de mi corazón que te pertenecerá eternamente.",
+        author: "Flor M. Salvador, Después de Él",
       },
     ],
   },
@@ -92,19 +118,19 @@ export const BOOKS_DATA: BookData[] = [
       },
       {
         text: "Eres mi punto débil... y no sabes lo aterrador y emocionante que es eso.",
-        author: "Joana Marcús, Antes de Diciembre",
-      },
-      {
-        text: "A veces, tenemos que hacer sacrificios por amor. Porque queremos a la otra persona más que a nosotros mismos.",
-        author: "Joana Marcús, Antes de Diciembre",
+        author: "Jack Ross, Antes de Diciembre",
       },
       {
         text: "Tú eres distinta.",
         author: "Jack Ross, Antes de Diciembre",
       },
       {
-        text: "No me fui con otra. No me fui con nadie. Tú fuiste quien se marchó. Y yo quería irme contigo, pero tú no estabas.",
-        author: "Jack Ross, Antes de Diciembre",
+        text: "A veces tenemos que hacer sacrificios por amor, porque queremos a la otra persona más que a nosotros mismos.",
+        author: "Joana Marcús, Antes de Diciembre",
+      },
+      {
+        text: "Estar contigo hace que cualquier invierno se sienta como el verano más cálido.",
+        author: "Joana Marcús, Antes de Diciembre",
       },
     ],
   },
@@ -125,16 +151,16 @@ export const BOOKS_DATA: BookData[] = [
         author: "Sr. Darcy, Orgullo y Prejuicio",
       },
       {
-        text: "He luchado en vano y ya no lo soporto más. Estos últimos meses han sido un tormento.",
+        text: "He luchado en vano y ya no lo soporto más. Estos últimos meses han sido un tormento... Mis sentimientos no pueden ser reprimidos.",
         author: "Sr. Darcy, Orgullo y Prejuicio",
       },
       {
-        text: "Podría perdonar fácilmente su orgullo si él no hubiese herido el mío.",
-        author: "Elizabeth Bennet, Orgullo y Prejuicio",
+        text: "Has hechizado mi cuerpo y mi alma, y te amo, te amo, te amo.",
+        author: "Sr. Darcy, Orgullo y Prejuicio",
       },
       {
-        text: "La imaginación de una dama es muy rápida: salta de la admiración al amor, del amor al matrimonio en un instante.",
-        author: "Jane Austen, Orgullo y Prejuicio",
+        text: "No puedo fijar la hora, ni el lugar, ni la mirada, ni las palabras que pusieron los cimientos de mi amor. Hace ya demasiado tiempo. Estaba ya en la mitad antes de saber que había empezado.",
+        author: "Sr. Darcy, Orgullo y Prejuicio",
       },
       {
         text: "El amor no mira con los ojos, sino con el alma.",
@@ -159,20 +185,122 @@ export const BOOKS_DATA: BookData[] = [
         author: "Carlos C. Sánchez, Los Ojos de Mi Princesa",
       },
       {
-        text: "Sé que tal vez nunca estarás tangiblemente a mi lado, pero también sé que nunca te irás.",
+        text: "Te amo porque sí. No sé si lo merezcas, pero no me importa, pues no te amo por merecimiento sino por devoción.",
+        author: "Carlos C. Sánchez, Los Ojos de Mi Princesa",
+      },
+      {
+        text: "Sé que tal vez nunca podré expresar todo lo que provocas en mí, pero sé que nunca te irás de mi alma.",
         author: "José Carlos, Los Ojos de Mi Princesa",
       },
       {
-        text: "Te amo porque sí. No sé si lo merezcas, pero no me importa, pues no te amo porque te lo merezcas.",
+        text: "Toda mujer sueña con un amor sincero que la sepa escuchar, que la proteja y la trate como a una reina... y tú eres mi princesa.",
         author: "Carlos C. Sánchez, Los Ojos de Mi Princesa",
       },
       {
-        text: "Escribir es una forma de desahogarse sanamente cuando la sed nos invita a beber agua de mar.",
-        author: "Carlos C. Sánchez, Los Ojos de Mi Princesa",
+        text: "En el reflejo de tus ojos encontré la razón de todos mis versos.",
+        author: "José Carlos, Los Ojos de Mi Princesa",
+      },
+    ],
+  },
+  {
+    id: "damian",
+    title: "DAMIAN",
+    author: "Alex Mírez",
+    coverGradient: "from-[#0a0a0f] via-[#1c1322] to-[#2e112d]",
+    ribbonGradient: "from-fuchsia-900 via-purple-700 to-violet-950",
+    borderColor: "border-purple-500/40",
+    subtitle: "En medio de todos los secretos del mundo, mi unico refugio eres tu.",
+    leftPageHeader: "Misterios de Asfil",
+    secretNote:
+      "Pastelito, incluso en las historias mas intensas y misteriosas como Damian, el amor es esa fuerza inevitable que te atrapa por completo. Como yo contigo.",
+    quotes: [
+      {
+        text: "Te dejaré atraparme hasta el alma.",
+        author: "Alex Mírez, Damián",
       },
       {
-        text: "Toda mujer sueña con un hombre que la sepa escuchar, que no la juzgue duramente y que la trate como a una princesa.",
-        author: "Carlos C. Sánchez, Los Ojos de Mi Princesa",
+        text: "En medio del caos y los secretos, mi único lugar seguro siempre fuiste tú.",
+        author: "Alex Mírez, Damián",
+      },
+      {
+        text: "No me importa la oscuridad del mundo si es a tu lado donde me encuentro.",
+        author: "Alex Mírez, Damián",
+      },
+      {
+        text: "Hay miradas que te desmantelan por completo, y la tuya tiene el poder de paralizar mi mundo entero.",
+        author: "Alex Mírez, Damián",
+      },
+      {
+        text: "Mi corazón aprendió a latir con fuerza solo cuando tus pasos se cruzaron con los míos.",
+        author: "Alex Mírez, Damián",
+      },
+    ],
+  },
+  {
+    id: "alas-de-sangre",
+    title: "ALAS DE SANGRE",
+    author: "Rebecca Yarros",
+    coverGradient: "from-[#1a0f0f] via-[#2e1414] to-[#451818]",
+    ribbonGradient: "from-red-700 via-rose-700 to-red-950",
+    borderColor: "border-rose-500/40",
+    subtitle: "No hay un yo sin ti. Mi amor no es voluble.",
+    leftPageHeader: "El Cuadrante de los Jinetes",
+    secretNote:
+      "Pastelito, como le dijo Xaden a Violet: no hay un yo sin ti. Eres mi persona indestructible y mi mayor tesoro.",
+    quotes: [
+      {
+        text: "Mi amor por ti no es voluble, Violet. No hay un yo sin ti.",
+        author: "Xaden Riorson, Alas de Sangre",
+      },
+      {
+        text: "He sido tuyo desde hace más tiempo del que podrías imaginar.",
+        author: "Xaden Riorson, Alas de Sangre",
+      },
+      {
+        text: "Me diste tu corazón, y te juro que voy a protegerlo con mi propia vida.",
+        author: "Xaden Riorson, Alas de Sangre",
+      },
+      {
+        text: "Estar contigo es estar en casa. La única persona en este mundo de la que nunca me cansaré.",
+        author: "Rebecca Yarros, Alas de Sangre",
+      },
+      {
+        text: "Violencia, recuerda que solo el cuerpo es frágil. Tu espíritu y nuestro amor son indestructibles.",
+        author: "Xaden Riorson, Alas de Sangre",
+      },
+    ],
+  },
+  {
+    id: "alas-de-hierro",
+    title: "ALAS DE HIERRO",
+    author: "Rebecca Yarros",
+    coverGradient: "from-[#111827] via-[#1f2937] to-[#374151]",
+    ribbonGradient: "from-slate-600 via-cyan-800 to-slate-900",
+    borderColor: "border-cyan-300/40",
+    subtitle: "Eres mi gravedad. Nada en mi mundo funciona sin ti.",
+    leftPageHeader: "Fuego y Lealtad",
+    secretNote:
+      "Pastelito, como en Alas de Hierro: eres mi gravedad absoluta. En cualquier vida, siempre te elegiria a ti.",
+    quotes: [
+      {
+        text: "Te amo. Estoy enamorado de ti. Mi corazón solo late mientras el tuyo lo haga. Estás atrapada conmigo en esta vida y en cualquier otra que siga.",
+        author: "Xaden Riorson, Alas de Hierro",
+      },
+      {
+        text: "Eres mi gravedad. Nada en mi mundo funciona sin ti.",
+        author: "Xaden Riorson, Alas de Hierro",
+      },
+      {
+        text: "Incluso cuando no estoy contigo, solo estás tú en mi mente.",
+        author: "Xaden Riorson, Alas de Hierro",
+      },
+      {
+        text: "Acepta esto, Violet: me tienes a mí. Lo bueno, lo malo, lo imperdonable. Todo ello. Soy completamente tuyo.",
+        author: "Xaden Riorson, Alas de Hierro",
+      },
+      {
+        text: "Porque el amor, en su raíz, es esperanza. Esperanza de que la persona a la que le has confiado tu todo lo acunará y protegerá.",
+        author: "Rebecca Yarros, Alas de Hierro",
       },
     ],
   },
@@ -267,16 +395,16 @@ export default function BookCard3D() {
   return (
     <div className="relative w-full flex flex-col items-center justify-center py-4 px-4">
       {/* Bookshelf Tab Selector */}
-      <div className="mb-6 flex flex-wrap items-center justify-center gap-2 max-w-2xl mx-auto z-20">
+      <div className="mb-6 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-4xl mx-auto z-20">
         {BOOKS_DATA.map((book, idx) => {
           const isSelected = idx === selectedBookIndex;
           return (
             <button
               key={book.id}
               onClick={() => handleSelectBook(idx)}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-serif transition-all shadow-md ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-serif transition-all shadow-md ${
                 isSelected
-                  ? "bg-amber-400/20 text-amber-200 border border-amber-400/60 ring-1 ring-amber-400/30 scale-105"
+                  ? "bg-amber-400/20 text-amber-200 border border-amber-400/70 ring-1 ring-amber-400/40 scale-105"
                   : "bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-800"
               }`}
             >
@@ -341,14 +469,14 @@ export default function BookCard3D() {
                 <div className="flex items-center justify-between text-amber-900/60 mb-2 text-xs tracking-widest uppercase font-serif">
                   <span className="flex items-center gap-1.5 font-medium">
                     <BookOpen className="w-3.5 h-3.5 text-amber-700" />
-                    Frases del Libro
+                    Frases de Amor
                   </span>
                   <span className="font-mono text-[10px]">
                     {quoteIndex + 1} / {currentBook.quotes.length}
                   </span>
                 </div>
 
-                <h3 className="font-playfair text-xl sm:text-2xl font-bold text-slate-800 leading-tight">
+                <h3 className="font-playfair text-lg sm:text-2xl font-bold text-slate-800 leading-tight">
                   {currentBook.title}
                 </h3>
                 <p className="text-xs text-amber-800/70 italic font-serif mt-0.5">
