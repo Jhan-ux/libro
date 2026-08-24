@@ -3,8 +3,8 @@
 import React from "react";
 import StarryBackground from "@/components/StarryBackground";
 import BookCard3D from "@/components/BookCard3D";
-import AmbientSound from "@/components/AmbientSound";
-import { Heart, Sparkles, BookHeart, BookmarkCheck } from "lucide-react";
+import MusicPlayer from "@/components/AmbientSound";
+import { Heart, Sparkles, BookHeart } from "lucide-react";
 
 export default function HomePage() {
   return (
@@ -14,7 +14,7 @@ export default function HomePage() {
 
       {/* Top Navigation & Sound Bar */}
       <header className="relative z-20 w-full max-w-5xl mx-auto px-4 pt-6 pb-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-full bg-rose-500/20 border border-rose-400/40 flex items-center justify-center">
             <BookHeart className="w-4 h-4 text-rose-400" />
           </div>
@@ -23,13 +23,13 @@ export default function HomePage() {
               El Rincón de Lectura
             </h2>
             <p className="text-[11px] text-slate-400 font-serif">
-              Dedicado a mi Pastelito favorita 🍰
+              Dedicado a mi Pastelito
             </p>
           </div>
         </div>
 
-        {/* Ambient Sound Bar (Rain / Chimes) */}
-        <AmbientSound />
+        {/* Music Player with Wonderwall by Oasis & Rain */}
+        <MusicPlayer />
       </header>
 
       {/* Center 3D Card Interactive Experience */}
@@ -48,7 +48,7 @@ export default function HomePage() {
       <footer className="relative z-20 w-full max-w-4xl mx-auto px-4 py-5 text-center text-xs text-slate-400/70 border-t border-slate-800/40 font-serif">
         <div className="flex items-center justify-center gap-1.5 mb-1 text-slate-300">
           <span>Hecho con amor para ti</span>
-          <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500 animate-pulse" />
+          <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
         </div>
         <p className="text-[11px] text-slate-400">
           &ldquo;Porque cada historia contigo es mi lectura favorita.&rdquo;

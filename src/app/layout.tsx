@@ -18,7 +18,7 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Para mi Pastelito 🍰 | Una carta entre páginas",
+  title: "Para mi Pastelito | Una carta entre páginas",
   description: "Una tarjeta 3D interactiva para la lectora más especial.",
 };
 
