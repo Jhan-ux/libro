@@ -14,46 +14,179 @@ import {
   Quote,
   ChevronRight,
   Bookmark,
-  X
+  X,
+  BookMarked
 } from "lucide-react";
 
-const BOULEVARD_QUOTES = [
+export interface BookData {
+  id: string;
+  title: string;
+  author: string;
+  coverGradient: string;
+  ribbonGradient: string;
+  borderColor: string;
+  subtitle: string;
+  leftPageHeader: string;
+  secretNote: string;
+  quotes: { text: string; author: string }[];
+}
+
+export const BOOKS_DATA: BookData[] = [
   {
-    text: "Rompe mi corazón, pero no te vayas, nunca lo hagas.",
-    author: "Flor M. Salvador, Boulevard",
+    id: "boulevard",
+    title: "BOULEVARD",
+    author: "Flor M. Salvador",
+    coverGradient: "from-[#0c142b] via-[#1a1c38] to-[#2d1b4e]",
+    ribbonGradient: "from-rose-700 via-rose-600 to-rose-800",
+    borderColor: "border-amber-400/40",
+    subtitle: "En cada boulevard de la vida, elijo caminar a tu lado.",
+    leftPageHeader: "Boulevard de Recuerdos",
+    secretNote:
+      "Pastelito, cada vez que leas un libro y sientas mariposas o llores con el final, recuerda que aquí estoy yo para escucharte contarme cada detalle. Eres mi persona favorita en todo el universo.",
+    quotes: [
+      {
+        text: "Rompe mi corazón, pero no te vayas, nunca lo hagas.",
+        author: "Flor M. Salvador, Boulevard",
+      },
+      {
+        text: "¿Quién dijo que después de la tormenta hay sol, cuando puede haber un rayo?",
+        author: "Flor M. Salvador, Boulevard",
+      },
+      {
+        text: "Sé que estoy jodido porque no me enamoré de sus virtudes, me enamoré de sus defectos.",
+        author: "Flor M. Salvador, Boulevard",
+      },
+      {
+        text: "Al final de cuentas todos terminamos igual, en un boulevard de los sueños rotos.",
+        author: "Flor M. Salvador, Boulevard",
+      },
+      {
+        text: "Fuimos perfectamente imperfectos... Las reglas de las matemáticas dicen que negativo por negativo iguala a positivo. Entonces, ¿qué fuimos Luke y yo?",
+        author: "Flor M. Salvador, Boulevard",
+      },
+      {
+        text: "Cuando un sueño muere, alimenta el boulevard.",
+        author: "Flor M. Salvador, Boulevard",
+      },
+      {
+        text: "Él era oscuridad. Ella un rayo de sol. Y, sin embargo, juntos crearon su propio refugio.",
+        author: "Flor M. Salvador, Boulevard",
+      },
+    ],
   },
   {
-    text: "¿Quién dijo que después de la tormenta hay sol, cuando puede haber un rayo?",
-    author: "Flor M. Salvador, Boulevard",
+    id: "antes-de-diciembre",
+    title: "ANTES DE DICIEMBRE",
+    author: "Joana Marcús",
+    coverGradient: "from-[#0f2027] via-[#203a43] to-[#2c5364]",
+    ribbonGradient: "from-cyan-700 via-cyan-600 to-blue-800",
+    borderColor: "border-cyan-400/40",
+    subtitle: "Cada historia tiene su estacion, pero contigo quiero todos los meses del ano.",
+    leftPageHeader: "El Invierno Mas Calido",
+    secretNote:
+      "Pastelito, si Jack Ross decia que estaba seguro de pocas cosas en su vida pero de querer a Jen estaba completamente seguro, yo siento exactamente lo mismo contigo.",
+    quotes: [
+      {
+        text: "Te amo. Te quiero, Jen. He estado seguro de muy pocas cosas en mi vida, pero esta es una de ellas.",
+        author: "Jack Ross, Antes de Diciembre",
+      },
+      {
+        text: "Eres mi punto débil... y no sabes lo aterrador y emocionante que es eso.",
+        author: "Joana Marcús, Antes de Diciembre",
+      },
+      {
+        text: "A veces, tenemos que hacer sacrificios por amor. Porque queremos a la otra persona más que a nosotros mismos.",
+        author: "Joana Marcús, Antes de Diciembre",
+      },
+      {
+        text: "Tú eres distinta.",
+        author: "Jack Ross, Antes de Diciembre",
+      },
+      {
+        text: "No me fui con otra. No me fui con nadie. Tú fuiste quien se marchó. Y yo quería irme contigo, pero tú no estabas.",
+        author: "Jack Ross, Antes de Diciembre",
+      },
+    ],
   },
   {
-    text: "Sé que estoy jodido porque no me enamoré de sus virtudes, me enamoré de sus defectos.",
-    author: "Flor M. Salvador, Boulevard",
+    id: "orgullo-y-prejuicio",
+    title: "ORGULLO Y PREJUICIO",
+    author: "Jane Austen",
+    coverGradient: "from-[#200122] via-[#3d0b2e] to-[#591024]",
+    ribbonGradient: "from-amber-700 via-amber-600 to-yellow-800",
+    borderColor: "border-amber-300/40",
+    subtitle: "Has hechizado mi cuerpo y mi alma, y te amo con la fuerza de mil paginas.",
+    leftPageHeader: "Clasico Inmortal",
+    secretNote:
+      "Pastelito, el Sr. Darcy dijo que lucho en vano porque no podia contener lo que sentia por Elizabeth. A mi me pasa igual cada vez que te veo sonreir.",
+    quotes: [
+      {
+        text: "Debe usted permitirme decirle cuán apasionadamente la admiro y la amo.",
+        author: "Sr. Darcy, Orgullo y Prejuicio",
+      },
+      {
+        text: "He luchado en vano y ya no lo soporto más. Estos últimos meses han sido un tormento.",
+        author: "Sr. Darcy, Orgullo y Prejuicio",
+      },
+      {
+        text: "Podría perdonar fácilmente su orgullo si él no hubiese herido el mío.",
+        author: "Elizabeth Bennet, Orgullo y Prejuicio",
+      },
+      {
+        text: "La imaginación de una dama es muy rápida: salta de la admiración al amor, del amor al matrimonio en un instante.",
+        author: "Jane Austen, Orgullo y Prejuicio",
+      },
+      {
+        text: "El amor no mira con los ojos, sino con el alma.",
+        author: "Jane Austen, Orgullo y Prejuicio",
+      },
+    ],
   },
   {
-    text: "Al final de cuentas todos terminamos igual, en un boulevard de los sueños rotos.",
-    author: "Flor M. Salvador, Boulevard",
-  },
-  {
-    text: "Fuimos perfectamente imperfectos... Las reglas de las matemáticas dicen que negativo por negativo iguala a positivo. Entonces, ¿qué fuimos Luke y yo?",
-    author: "Flor M. Salvador, Boulevard",
-  },
-  {
-    text: "Cuando un sueño muere, alimenta el boulevard.",
-    author: "Flor M. Salvador, Boulevard",
-  },
-  {
-    text: "Él era oscuridad. Ella un rayo de sol. Y, sin embargo, juntos crearon su propio refugio.",
-    author: "Flor M. Salvador, Boulevard",
+    id: "los-ojos-de-mi-princesa",
+    title: "LOS OJOS DE MI PRINCESA",
+    author: "Carlos Cuauhtémoc Sánchez",
+    coverGradient: "from-[#141e30] via-[#1d2d44] to-[#243b55]",
+    ribbonGradient: "from-emerald-700 via-emerald-600 to-teal-800",
+    borderColor: "border-emerald-400/40",
+    subtitle: "En el reflejo de tus ojos encontre la historia mas pura y verdadera.",
+    leftPageHeader: "Cartas a Sheccid",
+    secretNote:
+      "Pastelito, tus ojos tienen esa magia de la que hablaban en este libro. Eres mi inspiracion constante y mi princesa favorita.",
+    quotes: [
+      {
+        text: "Definir es limitar y el amor no tiene límites.",
+        author: "Carlos C. Sánchez, Los Ojos de Mi Princesa",
+      },
+      {
+        text: "Sé que tal vez nunca estarás tangiblemente a mi lado, pero también sé que nunca te irás.",
+        author: "José Carlos, Los Ojos de Mi Princesa",
+      },
+      {
+        text: "Te amo porque sí. No sé si lo merezcas, pero no me importa, pues no te amo porque te lo merezcas.",
+        author: "Carlos C. Sánchez, Los Ojos de Mi Princesa",
+      },
+      {
+        text: "Escribir es una forma de desahogarse sanamente cuando la sed nos invita a beber agua de mar.",
+        author: "Carlos C. Sánchez, Los Ojos de Mi Princesa",
+      },
+      {
+        text: "Toda mujer sueña con un hombre que la sepa escuchar, que no la juzgue duramente y que la trate como a una princesa.",
+        author: "Carlos C. Sánchez, Los Ojos de Mi Princesa",
+      },
+    ],
   },
 ];
 
 export default function BookCard3D() {
+  const [selectedBookIndex, setSelectedBookIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [isRotating3D, setIsRotating3D] = useState(false);
   const [quoteIndex, setQuoteIndex] = useState(0);
   const [showSecretNote, setShowSecretNote] = useState(false);
   const [heartsCount, setHeartsCount] = useState(0);
+
+  const currentBook = BOOKS_DATA[selectedBookIndex];
 
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
@@ -106,6 +239,11 @@ export default function BookCard3D() {
     }
   };
 
+  const handleSelectBook = (index: number) => {
+    setSelectedBookIndex(index);
+    setQuoteIndex(0);
+  };
+
   const handleSendHearts = (e: React.MouseEvent) => {
     e.stopPropagation();
     setHeartsCount((prev) => prev + 1);
@@ -123,11 +261,36 @@ export default function BookCard3D() {
 
   const nextQuote = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setQuoteIndex((prev) => (prev + 1) % BOULEVARD_QUOTES.length);
+    setQuoteIndex((prev) => (prev + 1) % currentBook.quotes.length);
   };
 
   return (
-    <div className="relative w-full flex flex-col items-center justify-center py-6 px-4">
+    <div className="relative w-full flex flex-col items-center justify-center py-4 px-4">
+      {/* Bookshelf Tab Selector */}
+      <div className="mb-6 flex flex-wrap items-center justify-center gap-2 max-w-2xl mx-auto z-20">
+        {BOOKS_DATA.map((book, idx) => {
+          const isSelected = idx === selectedBookIndex;
+          return (
+            <button
+              key={book.id}
+              onClick={() => handleSelectBook(idx)}
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-serif transition-all shadow-md ${
+                isSelected
+                  ? "bg-amber-400/20 text-amber-200 border border-amber-400/60 ring-1 ring-amber-400/30 scale-105"
+                  : "bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-800"
+              }`}
+            >
+              <BookMarked
+                className={`w-3.5 h-3.5 ${
+                  isSelected ? "text-amber-400" : "text-slate-500"
+                }`}
+              />
+              <span>{book.title}</span>
+            </button>
+          );
+        })}
+      </div>
+
       {/* 3D Scene Viewport */}
       <div
         ref={containerRef}
@@ -137,14 +300,12 @@ export default function BookCard3D() {
         style={{ perspective: "2200px" }}
       >
         <motion.div
-          className="relative w-full h-full flex items-center justify-center"
+          key={currentBook.id}
+          initial={{ opacity: 0, scale: 0.96 }}
           animate={{
+            opacity: 1,
             rotateX: isRotating3D ? [0, 10, -10, 0] : rotateX,
-            rotateY: isRotating3D
-              ? [0, 180, 360]
-              : isOpen
-              ? 0
-              : rotateY,
+            rotateY: isRotating3D ? [0, 180, 360] : isOpen ? 0 : rotateY,
             scale: isOpen ? 1 : 0.98,
           }}
           transition={
@@ -155,6 +316,7 @@ export default function BookCard3D() {
           style={{
             transformStyle: "preserve-3d",
           }}
+          className="relative w-full h-full flex items-center justify-center"
         >
           {/* ============================================================ */}
           {/* INNER PAGES (BASE)                                           */}
@@ -170,7 +332,7 @@ export default function BookCard3D() {
             {/* Center Spine Shadow */}
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-8 -ml-4 bg-gradient-to-r from-black/15 via-black/5 to-black/15 pointer-events-none z-20" />
 
-            {/* LEFT PAGE: Real Quotes from Boulevard */}
+            {/* LEFT PAGE: Real Quotes from the selected book */}
             <div className="w-full md:w-1/2 h-1/2 md:h-full p-6 sm:p-8 flex flex-col justify-between border-b md:border-b-0 md:border-r border-[#e8dac5] bg-gradient-to-br from-[#faf6ee] to-[#f4ece0] relative overflow-hidden">
               <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-amber-800/20" />
               <div className="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-amber-800/20" />
@@ -182,15 +344,15 @@ export default function BookCard3D() {
                     Frases del Libro
                   </span>
                   <span className="font-mono text-[10px]">
-                    {quoteIndex + 1} / {BOULEVARD_QUOTES.length}
+                    {quoteIndex + 1} / {currentBook.quotes.length}
                   </span>
                 </div>
 
                 <h3 className="font-playfair text-xl sm:text-2xl font-bold text-slate-800 leading-tight">
-                  Boulevard
+                  {currentBook.title}
                 </h3>
                 <p className="text-xs text-amber-800/70 italic font-serif mt-0.5">
-                  Flor M. Salvador
+                  {currentBook.author}
                 </p>
               </div>
 
@@ -199,15 +361,15 @@ export default function BookCard3D() {
                 <div className="relative bg-white/75 backdrop-blur-xs p-4 sm:p-5 rounded-xl border border-amber-200/60 shadow-xs min-h-[120px] flex flex-col justify-between">
                   <Quote className="w-6 h-6 text-amber-600/30 absolute -top-2.5 -left-1" />
                   <p className="font-lora text-slate-700 text-xs sm:text-sm leading-relaxed italic relative z-10">
-                    &ldquo;{BOULEVARD_QUOTES[quoteIndex].text}&rdquo;
+                    &ldquo;{currentBook.quotes[quoteIndex]?.text}&rdquo;
                   </p>
                   <div className="mt-3 pt-2 border-t border-amber-100 flex items-center justify-between">
-                    <span className="text-[11px] text-amber-900/60 font-serif">
-                      Luke & Hasley
+                    <span className="text-[11px] text-amber-900/60 font-serif truncate max-w-[170px]">
+                      {currentBook.quotes[quoteIndex]?.author}
                     </span>
                     <button
                       onClick={nextQuote}
-                      className="text-xs text-rose-600 hover:text-rose-700 font-medium flex items-center gap-0.5 px-2 py-0.5 rounded-full hover:bg-rose-50 transition-colors"
+                      className="text-xs text-rose-600 hover:text-rose-700 font-medium flex items-center gap-0.5 px-2 py-0.5 rounded-full hover:bg-rose-50 transition-colors shrink-0"
                     >
                       Siguiente frase <ChevronRight className="w-3 h-3" />
                     </button>
@@ -254,7 +416,7 @@ export default function BookCard3D() {
                 </p>
                 <p className="font-medium text-rose-950">
                   En un mundo lleno de caminos, tú eres mi historia favorita,
-                  mi lugar seguro y mi boulevard eterno.
+                  mi lugar seguro y mi lectura eterna.
                 </p>
               </div>
 
@@ -291,7 +453,7 @@ export default function BookCard3D() {
           </div>
 
           {/* ============================================================ */}
-          {/* FRONT COVER                                                  */}
+          {/* FRONT COVER (DYNAMIC BY SELECTED BOOK)                       */}
           {/* ============================================================ */}
           <motion.div
             onClick={handleToggleOpen}
@@ -310,7 +472,7 @@ export default function BookCard3D() {
             }}
           >
             <div
-              className="absolute inset-0 w-full h-full rounded-2xl book-shadow overflow-hidden bg-gradient-to-br from-[#0c142b] via-[#1a1c38] to-[#2d1b4e] p-6 sm:p-8 flex flex-col justify-between border-2 border-amber-400/40 text-slate-100"
+              className={`absolute inset-0 w-full h-full rounded-2xl book-shadow overflow-hidden bg-gradient-to-br ${currentBook.coverGradient} p-6 sm:p-8 flex flex-col justify-between border-2 ${currentBook.borderColor} text-slate-100`}
               style={{
                 backfaceVisibility: "hidden",
                 WebkitBackfaceVisibility: "hidden",
@@ -328,7 +490,9 @@ export default function BookCard3D() {
               <div className="absolute inset-4 border border-amber-300/20 rounded-lg pointer-events-none" />
 
               {/* Silk ribbon bookmark */}
-              <div className="absolute top-0 right-10 w-7 h-28 bg-gradient-to-b from-rose-700 via-rose-600 to-rose-800 shadow-lg flex flex-col items-center justify-end pb-2 rounded-b-sm border-x border-rose-900 z-30">
+              <div
+                className={`absolute top-0 right-10 w-7 h-28 bg-gradient-to-b ${currentBook.ribbonGradient} shadow-lg flex flex-col items-center justify-end pb-2 rounded-b-sm border-x border-black/30 z-30`}
+              >
                 <div className="w-2 h-2 rounded-full bg-amber-300 shadow-xs mb-1" />
                 <div className="w-0 h-0 border-x-[14px] border-x-transparent border-b-[10px] border-b-[#0c142b] absolute -bottom-[1px]" />
               </div>
@@ -347,8 +511,8 @@ export default function BookCard3D() {
                   <Star className="w-3 h-3 fill-amber-300 text-amber-300" />
                 </div>
 
-                <h1 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-100 via-amber-200 to-amber-400 bg-clip-text text-transparent drop-shadow-md tracking-wide">
-                  BOULEVARD
+                <h1 className="font-playfair text-2xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-100 via-amber-200 to-amber-400 bg-clip-text text-transparent drop-shadow-md tracking-wide leading-tight">
+                  {currentBook.title}
                 </h1>
 
                 <p className="font-dancing text-2xl sm:text-3xl text-rose-300 mt-1 font-semibold">
@@ -356,7 +520,7 @@ export default function BookCard3D() {
                 </p>
 
                 <p className="font-lora text-xs sm:text-sm text-slate-300/80 italic max-w-sm mx-auto mt-3 leading-relaxed">
-                  &ldquo;En cada boulevard de la vida, elijo caminar a tu lado.&rdquo;
+                  &ldquo;{currentBook.subtitle}&rdquo;
                 </p>
               </div>
 
@@ -418,7 +582,7 @@ export default function BookCard3D() {
             >
               <div className="flex items-center justify-between mb-3 border-b border-amber-900/10 pb-2">
                 <span className="font-dancing text-2xl text-rose-700 font-bold">
-                  P.D. Secreta
+                  P.D. Secreta ({currentBook.title})
                 </span>
                 <button
                   onClick={() => setShowSecretNote(false)}
@@ -429,10 +593,7 @@ export default function BookCard3D() {
                 </button>
               </div>
               <p className="font-lora text-sm sm:text-base leading-relaxed text-slate-800">
-                &ldquo;Pastelito, cada vez que leas un libro y sientas mariposas
-                o llores con el final, recuerda que aquí estoy yo para escucharte
-                contarme cada detalle. Eres mi persona favorita en todo el
-                universo.&rdquo;
+                &ldquo;{currentBook.secretNote}&rdquo;
               </p>
               <div className="mt-4 pt-2 text-right">
                 <span className="font-dancing text-xl text-amber-900">
