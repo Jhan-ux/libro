@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
 import {
@@ -15,7 +15,8 @@ import {
   ChevronRight,
   Bookmark,
   X,
-  BookMarked
+  BookMarked,
+  Layers
 } from "lucide-react";
 
 export interface BookData {
@@ -36,9 +37,9 @@ export const BOOKS_DATA: BookData[] = [
     id: "boulevard",
     title: "BOULEVARD",
     author: "Flor M. Salvador",
-    coverGradient: "from-[#0c142b] via-[#1a1c38] to-[#2d1b4e]",
+    coverGradient: "from-[#080d1e] via-[#141836] to-[#251340]",
     ribbonGradient: "from-rose-700 via-rose-600 to-rose-800",
-    borderColor: "border-amber-400/40",
+    borderColor: "border-amber-400/50",
     subtitle: "En cada boulevard de la vida, elijo caminar a tu lado.",
     leftPageHeader: "Boulevard de Recuerdos",
     secretNote:
@@ -70,9 +71,9 @@ export const BOOKS_DATA: BookData[] = [
     id: "despues-de-el",
     title: "DESPUES DE EL",
     author: "Flor M. Salvador",
-    coverGradient: "from-[#161233] via-[#281d42] to-[#40203d]",
+    coverGradient: "from-[#120e29] via-[#221638] to-[#381a36]",
     ribbonGradient: "from-purple-700 via-pink-600 to-rose-800",
-    borderColor: "border-purple-400/40",
+    borderColor: "border-purple-400/50",
     subtitle: "El amor verdadero trasciende el tiempo y se convierte en luz.",
     leftPageHeader: "Un Nuevo Comienzo",
     secretNote:
@@ -104,9 +105,9 @@ export const BOOKS_DATA: BookData[] = [
     id: "antes-de-diciembre",
     title: "ANTES DE DICIEMBRE",
     author: "Joana Marcús",
-    coverGradient: "from-[#0f2027] via-[#203a43] to-[#2c5364]",
+    coverGradient: "from-[#0a1824] via-[#162d3d] to-[#224457]",
     ribbonGradient: "from-cyan-700 via-cyan-600 to-blue-800",
-    borderColor: "border-cyan-400/40",
+    borderColor: "border-cyan-400/50",
     subtitle: "Cada historia tiene su estacion, pero contigo quiero todos los meses del ano.",
     leftPageHeader: "El Invierno Mas Calido",
     secretNote:
@@ -138,9 +139,9 @@ export const BOOKS_DATA: BookData[] = [
     id: "orgullo-y-prejuicio",
     title: "ORGULLO Y PREJUICIO",
     author: "Jane Austen",
-    coverGradient: "from-[#200122] via-[#3d0b2e] to-[#591024]",
+    coverGradient: "from-[#1a011d] via-[#330726] to-[#4d0b1f]",
     ribbonGradient: "from-amber-700 via-amber-600 to-yellow-800",
-    borderColor: "border-amber-300/40",
+    borderColor: "border-amber-300/50",
     subtitle: "Has hechizado mi cuerpo y mi alma, y te amo con la fuerza de mil paginas.",
     leftPageHeader: "Clasico Inmortal",
     secretNote:
@@ -172,9 +173,9 @@ export const BOOKS_DATA: BookData[] = [
     id: "los-ojos-de-mi-princesa",
     title: "LOS OJOS DE MI PRINCESA",
     author: "Carlos Cuauhtémoc Sánchez",
-    coverGradient: "from-[#141e30] via-[#1d2d44] to-[#243b55]",
+    coverGradient: "from-[#0f1726] via-[#17273d] to-[#203652]",
     ribbonGradient: "from-emerald-700 via-emerald-600 to-teal-800",
-    borderColor: "border-emerald-400/40",
+    borderColor: "border-emerald-400/50",
     subtitle: "En el reflejo de tus ojos encontre la historia mas pura y verdadera.",
     leftPageHeader: "Cartas a Sheccid",
     secretNote:
@@ -206,9 +207,9 @@ export const BOOKS_DATA: BookData[] = [
     id: "damian",
     title: "DAMIAN",
     author: "Alex Mírez",
-    coverGradient: "from-[#0a0a0f] via-[#1c1322] to-[#2e112d]",
+    coverGradient: "from-[#050508] via-[#170e1c] to-[#260c25]",
     ribbonGradient: "from-fuchsia-900 via-purple-700 to-violet-950",
-    borderColor: "border-purple-500/40",
+    borderColor: "border-purple-500/50",
     subtitle: "En medio de todos los secretos del mundo, mi unico refugio eres tu.",
     leftPageHeader: "Misterios de Asfil",
     secretNote:
@@ -240,9 +241,9 @@ export const BOOKS_DATA: BookData[] = [
     id: "alas-de-sangre",
     title: "ALAS DE SANGRE",
     author: "Rebecca Yarros",
-    coverGradient: "from-[#1a0f0f] via-[#2e1414] to-[#451818]",
+    coverGradient: "from-[#140808] via-[#240e0e] to-[#3b1212]",
     ribbonGradient: "from-red-700 via-rose-700 to-red-950",
-    borderColor: "border-rose-500/40",
+    borderColor: "border-rose-500/50",
     subtitle: "No hay un yo sin ti. Mi amor no es voluble.",
     leftPageHeader: "El Cuadrante de los Jinetes",
     secretNote:
@@ -274,9 +275,9 @@ export const BOOKS_DATA: BookData[] = [
     id: "alas-de-hierro",
     title: "ALAS DE HIERRO",
     author: "Rebecca Yarros",
-    coverGradient: "from-[#111827] via-[#1f2937] to-[#374151]",
+    coverGradient: "from-[#0b1019] via-[#192330] to-[#2c394a]",
     ribbonGradient: "from-slate-600 via-cyan-800 to-slate-900",
-    borderColor: "border-cyan-300/40",
+    borderColor: "border-cyan-300/50",
     subtitle: "Eres mi gravedad. Nada en mi mundo funciona sin ti.",
     leftPageHeader: "Fuego y Lealtad",
     secretNote:
@@ -310,9 +311,11 @@ export default function BookCard3D() {
   const [selectedBookIndex, setSelectedBookIndex] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [isRotating3D, setIsRotating3D] = useState(false);
+  const [mobileTab, setMobileTab] = useState<"quotes" | "letter">("letter");
   const [quoteIndex, setQuoteIndex] = useState(0);
   const [showSecretNote, setShowSecretNote] = useState(false);
   const [heartsCount, setHeartsCount] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const currentBook = BOOKS_DATA[selectedBookIndex];
 
@@ -322,8 +325,17 @@ export default function BookCard3D() {
 
   const containerRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current || isRotating3D) return;
+    if (!containerRef.current || isRotating3D || isMobile) return;
 
     const rect = containerRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -346,7 +358,7 @@ export default function BookCard3D() {
   };
 
   const handleMouseLeave = () => {
-    if (!isRotating3D) {
+    if (!isRotating3D && !isMobile) {
       setRotateX(0);
       setRotateY(0);
       setGlarePos((prev) => ({ ...prev, opacity: 0 }));
@@ -393,16 +405,16 @@ export default function BookCard3D() {
   };
 
   return (
-    <div className="relative w-full flex flex-col items-center justify-center py-4 px-4">
+    <div className="relative w-full flex flex-col items-center justify-center py-4 px-2 sm:px-4">
       {/* Bookshelf Tab Selector */}
-      <div className="mb-6 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-4xl mx-auto z-20">
+      <div className="mb-5 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-4xl mx-auto z-20">
         {BOOKS_DATA.map((book, idx) => {
           const isSelected = idx === selectedBookIndex;
           return (
             <button
               key={book.id}
               onClick={() => handleSelectBook(idx)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-serif transition-all shadow-md ${
+              className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-serif transition-all shadow-md ${
                 isSelected
                   ? "bg-amber-400/20 text-amber-200 border border-amber-400/70 ring-1 ring-amber-400/40 scale-105"
                   : "bg-slate-900/80 hover:bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-800"
@@ -424,8 +436,8 @@ export default function BookCard3D() {
         ref={containerRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="relative w-full max-w-[340px] sm:max-w-[420px] md:max-w-[800px] h-[540px] sm:h-[580px] md:h-[520px] flex items-center justify-center cursor-pointer select-none"
-        style={{ perspective: "2200px" }}
+        className="relative w-full max-w-[340px] sm:max-w-[380px] md:max-w-[760px] h-[520px] sm:h-[540px] md:h-[490px] flex items-center justify-center cursor-pointer select-none"
+        style={{ perspective: isMobile ? "none" : "2000px" }}
       >
         <motion.div
           key={currentBook.id}
@@ -433,179 +445,229 @@ export default function BookCard3D() {
           animate={{
             opacity: 1,
             rotateX: isRotating3D ? [0, 10, -10, 0] : rotateX,
-            rotateY: isRotating3D ? [0, 180, 360] : isOpen ? 0 : rotateY,
-            scale: isOpen ? 1 : 0.98,
+            rotateY: isRotating3D ? [0, 180, 360] : 0,
+            scale: 1,
           }}
           transition={
             isRotating3D
               ? { repeat: Infinity, duration: 10, ease: "linear" }
               : { type: "spring", stiffness: 220, damping: 25 }
           }
-          style={{
-            transformStyle: "preserve-3d",
-          }}
           className="relative w-full h-full flex items-center justify-center"
         >
           {/* ============================================================ */}
-          {/* INNER PAGES (BASE)                                           */}
+          {/* WHEN CARD IS OPEN                                            */}
           {/* ============================================================ */}
-          <div
-            className={`absolute inset-0 md:inset-x-0 w-full h-full bg-[#faf5ec] rounded-2xl book-shadow border-2 border-[#e5d5be] flex flex-col md:flex-row overflow-hidden transition-all duration-700 ${
-              isOpen ? "opacity-100 shadow-2xl scale-100" : "opacity-95"
-            }`}
-            style={{
-              transform: "translateZ(0px)",
-            }}
-          >
-            {/* Center Spine Shadow */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-8 -ml-4 bg-gradient-to-r from-black/15 via-black/5 to-black/15 pointer-events-none z-20" />
+          {isOpen ? (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.4 }}
+              className="w-full h-full bg-[#faf5ec] rounded-2xl book-shadow border-2 border-[#e5d5be] flex flex-col md:flex-row overflow-hidden"
+            >
+              {/* DESKTOP: Left Page (Quotes) */}
+              <div className="hidden md:flex w-1/2 h-full p-7 flex-col justify-between border-r border-[#e8dac5] bg-gradient-to-br from-[#faf6ee] to-[#f4ece0] relative">
+                <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-amber-800/20" />
+                <div className="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-amber-800/20" />
 
-            {/* LEFT PAGE: Real Quotes from the selected book */}
-            <div className="w-full md:w-1/2 h-1/2 md:h-full p-6 sm:p-8 flex flex-col justify-between border-b md:border-b-0 md:border-r border-[#e8dac5] bg-gradient-to-br from-[#faf6ee] to-[#f4ece0] relative overflow-hidden">
-              <div className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-amber-800/20" />
-              <div className="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-amber-800/20" />
+                <div>
+                  <div className="flex items-center justify-between text-amber-900/60 mb-2 text-xs tracking-widest uppercase font-serif">
+                    <span className="flex items-center gap-1.5 font-medium">
+                      <BookOpen className="w-3.5 h-3.5 text-amber-700" />
+                      Frases de Amor
+                    </span>
+                    <span className="font-mono text-[10px]">
+                      {quoteIndex + 1} / {currentBook.quotes.length}
+                    </span>
+                  </div>
 
-              <div>
-                <div className="flex items-center justify-between text-amber-900/60 mb-2 text-xs tracking-widest uppercase font-serif">
-                  <span className="flex items-center gap-1.5 font-medium">
-                    <BookOpen className="w-3.5 h-3.5 text-amber-700" />
-                    Frases de Amor
-                  </span>
-                  <span className="font-mono text-[10px]">
-                    {quoteIndex + 1} / {currentBook.quotes.length}
-                  </span>
+                  <h3 className="font-playfair text-xl font-bold text-slate-800 leading-tight">
+                    {currentBook.title}
+                  </h3>
+                  <p className="text-xs text-amber-800/70 italic font-serif mt-0.5">
+                    {currentBook.author}
+                  </p>
                 </div>
 
-                <h3 className="font-playfair text-lg sm:text-2xl font-bold text-slate-800 leading-tight">
-                  {currentBook.title}
-                </h3>
-                <p className="text-xs text-amber-800/70 italic font-serif mt-0.5">
-                  {currentBook.author}
-                </p>
-              </div>
-
-              {/* Quote Display */}
-              <div className="my-auto py-2">
-                <div className="relative bg-white/75 backdrop-blur-xs p-4 sm:p-5 rounded-xl border border-amber-200/60 shadow-xs min-h-[120px] flex flex-col justify-between">
-                  <Quote className="w-6 h-6 text-amber-600/30 absolute -top-2.5 -left-1" />
-                  <p className="font-lora text-slate-700 text-xs sm:text-sm leading-relaxed italic relative z-10">
-                    &ldquo;{currentBook.quotes[quoteIndex]?.text}&rdquo;
-                  </p>
-                  <div className="mt-3 pt-2 border-t border-amber-100 flex items-center justify-between">
-                    <span className="text-[11px] text-amber-900/60 font-serif truncate max-w-[170px]">
-                      {currentBook.quotes[quoteIndex]?.author}
-                    </span>
-                    <button
-                      onClick={nextQuote}
-                      className="text-xs text-rose-600 hover:text-rose-700 font-medium flex items-center gap-0.5 px-2 py-0.5 rounded-full hover:bg-rose-50 transition-colors shrink-0"
-                    >
-                      Siguiente frase <ChevronRight className="w-3 h-3" />
-                    </button>
+                <div className="my-auto py-2">
+                  <div className="relative bg-white/85 p-5 rounded-xl border border-amber-200/60 shadow-xs min-h-[120px] flex flex-col justify-between">
+                    <Quote className="w-5 h-5 text-amber-600/30 absolute -top-2.5 -left-1" />
+                    <p className="font-lora text-slate-700 text-sm leading-relaxed italic relative z-10">
+                      &ldquo;{currentBook.quotes[quoteIndex]?.text}&rdquo;
+                    </p>
+                    <div className="mt-3 pt-2 border-t border-amber-100 flex items-center justify-between">
+                      <span className="text-[11px] text-amber-900/60 font-serif truncate max-w-[180px]">
+                        {currentBook.quotes[quoteIndex]?.author}
+                      </span>
+                      <button
+                        onClick={nextQuote}
+                        className="text-xs text-rose-600 hover:text-rose-700 font-medium flex items-center gap-0.5 px-2 py-0.5 rounded-full hover:bg-rose-50 transition-colors"
+                      >
+                        Siguiente frase <ChevronRight className="w-3 h-3" />
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Bottom Note */}
-              <div className="flex items-center justify-between pt-2 border-t border-amber-900/10 text-xs text-amber-900/70 font-serif">
-                <span className="flex items-center gap-1.5">
-                  <Coffee className="w-3.5 h-3.5 text-amber-700" />
-                  Café, libros y tú
-                </span>
-                <span className="text-rose-700 font-serif italic text-xs">
-                  Para mi lectora favorita
-                </span>
-              </div>
-            </div>
-
-            {/* RIGHT PAGE: Letter for Pastelito */}
-            <div className="w-full md:w-1/2 h-1/2 md:h-full p-6 sm:p-8 flex flex-col justify-between bg-gradient-to-bl from-[#fffdf9] to-[#f9f2e7] relative overflow-hidden">
-              <div className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-amber-800/20" />
-              <div className="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-amber-800/20" />
-
-              <div className="flex items-center justify-between mb-1">
-                <span className="font-dancing text-2xl sm:text-3xl text-rose-700 font-bold">
-                  Querida Pastelito
-                </span>
-                <div className="flex items-center gap-1 text-amber-600">
-                  <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                  <Star className="w-2.5 h-2.5 fill-amber-400 text-amber-400" />
+                <div className="flex items-center justify-between pt-2 border-t border-amber-900/10 text-xs text-amber-900/70 font-serif">
+                  <span className="flex items-center gap-1.5">
+                    <Coffee className="w-3.5 h-3.5 text-amber-700" />
+                    Café, libros y tú
+                  </span>
+                  <span className="text-rose-700 font-serif italic text-xs">
+                    Para mi lectora favorita
+                  </span>
                 </div>
               </div>
 
-              <div className="font-lora text-slate-800 text-xs sm:text-sm leading-relaxed space-y-2.5 overflow-y-auto max-h-[190px] sm:max-h-[220px] pr-1 py-1">
-                <p>
-                  Dicen que hay libros que te cambian la vida, pero para mí, la
-                  historia más hermosa comenzó el día en que llegaste a la mía.
-                </p>
-                <p>
-                  Amo verte sumergirte en cada página, ver cómo se iluminan tus
-                  ojos con cada lectura y la pasión con la que sientes cada
-                  capítulo.
-                </p>
-                <p className="font-medium text-rose-950">
-                  En un mundo lleno de caminos, tú eres mi historia favorita,
-                  mi lugar seguro y mi lectura eterna.
-                </p>
-              </div>
-
-              <div className="pt-2 border-t border-amber-900/10 flex items-center justify-between gap-2">
-                <div>
-                  <p className="font-dancing text-lg text-slate-800 leading-none">
-                    Con todo mi amor,
-                  </p>
-                  <p className="text-[11px] text-amber-800/60 font-serif">
-                    Siempre a tu lado
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-2">
+              {/* MOBILE: Navigation Tab Header */}
+              <div className="md:hidden flex items-center justify-between border-b border-amber-900/10 px-4 py-2 bg-[#f4ece0]">
+                <div className="flex items-center gap-1">
                   <button
-                    onClick={() => setShowSecretNote(!showSecretNote)}
-                    className="px-2.5 py-1.5 rounded-lg bg-amber-100 hover:bg-amber-200 text-amber-900 text-xs font-serif flex items-center gap-1 transition-all shadow-xs"
-                    title="Nota secreta"
+                    onClick={() => setMobileTab("letter")}
+                    className={`px-3 py-1 rounded-full text-xs font-serif transition-colors ${
+                      mobileTab === "letter"
+                        ? "bg-rose-600 text-white shadow-xs font-medium"
+                        : "text-amber-950/70 hover:bg-amber-200/50"
+                    }`}
                   >
-                    <Feather className="w-3 h-3 text-amber-700" />
-                    <span>P.D.</span>
+                    Carta
                   </button>
-
                   <button
-                    onClick={handleSendHearts}
-                    className="px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-700 text-white text-xs font-medium flex items-center gap-1.5 transition-all shadow-md active:scale-95"
+                    onClick={() => setMobileTab("quotes")}
+                    className={`px-3 py-1 rounded-full text-xs font-serif transition-colors ${
+                      mobileTab === "quotes"
+                        ? "bg-rose-600 text-white shadow-xs font-medium"
+                        : "text-amber-950/70 hover:bg-amber-200/50"
+                    }`}
                   >
-                    <Heart className="w-3.5 h-3.5 fill-white text-white" />
-                    <span>{heartsCount > 0 ? heartsCount : "Dedicar"}</span>
+                    Frases ({quoteIndex + 1}/{currentBook.quotes.length})
                   </button>
                 </div>
+                <button
+                  onClick={handleToggleOpen}
+                  className="text-xs text-amber-900 font-serif flex items-center gap-1 px-2 py-0.5 rounded hover:bg-amber-200/50"
+                >
+                  Cerrar ✕
+                </button>
               </div>
-            </div>
-          </div>
 
-          {/* ============================================================ */}
-          {/* FRONT COVER (DYNAMIC BY SELECTED BOOK)                       */}
-          {/* ============================================================ */}
-          <motion.div
-            onClick={handleToggleOpen}
-            className="absolute inset-0 w-full h-full rounded-2xl cursor-pointer"
-            animate={{
-              rotateY: isOpen ? -175 : 0,
-            }}
-            transition={{
-              duration: 1.1,
-              ease: [0.25, 1, 0.5, 1],
-            }}
-            style={{
-              transformOrigin: "left center",
-              transformStyle: "preserve-3d",
-              zIndex: isOpen ? 10 : 30,
-            }}
-          >
-            <div
-              className={`absolute inset-0 w-full h-full rounded-2xl book-shadow overflow-hidden bg-gradient-to-br ${currentBook.coverGradient} p-6 sm:p-8 flex flex-col justify-between border-2 ${currentBook.borderColor} text-slate-100`}
-              style={{
-                backfaceVisibility: "hidden",
-                WebkitBackfaceVisibility: "hidden",
-              }}
+              {/* MOBILE: Quotes View */}
+              {mobileTab === "quotes" && (
+                <div className="md:hidden flex-1 p-5 flex flex-col justify-between bg-gradient-to-br from-[#faf6ee] to-[#f4ece0]">
+                  <div>
+                    <h3 className="font-playfair text-lg font-bold text-slate-800 leading-tight">
+                      {currentBook.title}
+                    </h3>
+                    <p className="text-xs text-amber-800/70 italic font-serif">
+                      {currentBook.author}
+                    </p>
+                  </div>
+
+                  <div className="my-auto py-2">
+                    <div className="relative bg-white/90 p-4 rounded-xl border border-amber-200 shadow-xs min-h-[130px] flex flex-col justify-between">
+                      <Quote className="w-5 h-5 text-amber-600/30 absolute -top-2 -left-1" />
+                      <p className="font-lora text-slate-800 text-xs leading-relaxed italic relative z-10">
+                        &ldquo;{currentBook.quotes[quoteIndex]?.text}&rdquo;
+                      </p>
+                      <div className="mt-3 pt-2 border-t border-amber-100 flex items-center justify-between">
+                        <span className="text-[10px] text-amber-900/60 font-serif truncate max-w-[140px]">
+                          {currentBook.quotes[quoteIndex]?.author}
+                        </span>
+                        <button
+                          onClick={nextQuote}
+                          className="text-xs text-rose-600 font-medium flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-rose-50"
+                        >
+                          Siguiente <ChevronRight className="w-3 h-3" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="text-center text-xs text-amber-900/70 font-serif pt-2 border-t border-amber-900/10">
+                    Para mi lectora favorita
+                  </div>
+                </div>
+              )}
+
+              {/* Letter for Pastelito (Desktop Right Page / Mobile Letter Tab) */}
+              {(mobileTab === "letter" || !isMobile) && (
+                <div className="w-full md:w-1/2 flex-1 md:h-full p-5 sm:p-7 flex flex-col justify-between bg-gradient-to-bl from-[#fffdf9] to-[#f9f2e7] relative">
+                  <div className="hidden md:block absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-amber-800/20" />
+                  <div className="hidden md:block absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-amber-800/20" />
+
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="font-dancing text-2xl sm:text-3xl text-rose-700 font-bold">
+                      Querida Pastelito
+                    </span>
+                    <div className="flex items-center gap-1 text-amber-600">
+                      <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                      <Star className="w-2.5 h-2.5 fill-amber-400 text-amber-400" />
+                    </div>
+                  </div>
+
+                  <div className="font-lora text-slate-800 text-xs sm:text-sm leading-relaxed space-y-2.5 overflow-y-auto max-h-[220px] sm:max-h-[240px] pr-1 py-1">
+                    <p>
+                      Dicen que hay libros que te cambian la vida, pero para mí, la
+                      historia más hermosa comenzó el día en que llegaste a la mía.
+                    </p>
+                    <p>
+                      Amo verte sumergirte en cada página, ver cómo se iluminan tus
+                      ojos con cada lectura y la pasión con la que sientes cada
+                      capítulo.
+                    </p>
+                    <p className="font-medium text-rose-950">
+                      En un mundo lleno de caminos, tú eres mi historia favorita,
+                      mi lugar seguro y mi lectura eterna.
+                    </p>
+                  </div>
+
+                  <div className="pt-3 border-t border-amber-900/10 flex items-center justify-between gap-2">
+                    <div>
+                      <p className="font-dancing text-lg text-slate-800 leading-none">
+                        Con todo mi amor,
+                      </p>
+                      <p className="text-[11px] text-amber-800/60 font-serif">
+                        Siempre a tu lado
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => setShowSecretNote(!showSecretNote)}
+                        className="px-2.5 py-1.5 rounded-lg bg-amber-100 hover:bg-amber-200 text-amber-900 text-xs font-serif flex items-center gap-1 transition-all shadow-xs"
+                        title="Nota secreta"
+                      >
+                        <Feather className="w-3 h-3 text-amber-700" />
+                        <span>P.D.</span>
+                      </button>
+
+                      <button
+                        onClick={handleSendHearts}
+                        className="px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-700 text-white text-xs font-medium flex items-center gap-1.5 transition-all shadow-md active:scale-95"
+                      >
+                        <Heart className="w-3.5 h-3.5 fill-white text-white" />
+                        <span>{heartsCount > 0 ? heartsCount : "Dedicar"}</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </motion.div>
+          ) : (
+            /* ============================================================ */
+            /* WHEN CARD IS CLOSED: CLEAN CRISP 3D FRONT COVER             */
+            /* ============================================================ */
+            <motion.div
+              onClick={handleToggleOpen}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              className={`w-full h-full rounded-2xl book-shadow overflow-hidden bg-gradient-to-br ${currentBook.coverGradient} p-6 sm:p-8 flex flex-col justify-between border-2 ${currentBook.borderColor} text-slate-100 relative cursor-pointer`}
             >
+              {/* Dynamic Glare Sheen */}
               <div
                 className="absolute inset-0 pointer-events-none transition-opacity duration-300 shimmer-gold"
                 style={{
@@ -614,32 +676,35 @@ export default function BookCard3D() {
                 }}
               />
 
-              <div className="absolute inset-3 border border-amber-300/30 rounded-xl pointer-events-none" />
+              {/* Gold borders */}
+              <div className="absolute inset-3 border border-amber-300/35 rounded-xl pointer-events-none" />
               <div className="absolute inset-4 border border-amber-300/20 rounded-lg pointer-events-none" />
 
               {/* Silk ribbon bookmark */}
               <div
-                className={`absolute top-0 right-10 w-7 h-28 bg-gradient-to-b ${currentBook.ribbonGradient} shadow-lg flex flex-col items-center justify-end pb-2 rounded-b-sm border-x border-black/30 z-30`}
+                className={`absolute top-0 right-8 sm:right-10 w-7 h-28 bg-gradient-to-b ${currentBook.ribbonGradient} shadow-lg flex flex-col items-center justify-end pb-2 rounded-b-sm border-x border-black/30 z-30`}
               >
                 <div className="w-2 h-2 rounded-full bg-amber-300 shadow-xs mb-1" />
-                <div className="w-0 h-0 border-x-[14px] border-x-transparent border-b-[10px] border-b-[#0c142b] absolute -bottom-[1px]" />
+                <div className="w-0 h-0 border-x-[14px] border-x-transparent border-b-[10px] border-b-[#080d1e] absolute -bottom-[1px]" />
               </div>
 
+              {/* Header */}
               <div className="relative z-10">
-                <div className="flex items-center gap-2 text-amber-300/80 text-xs tracking-widest uppercase font-serif">
+                <div className="flex items-center gap-2 text-amber-300/90 text-xs tracking-widest uppercase font-serif">
                   <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                   <span>Edición Especial</span>
                 </div>
               </div>
 
-              <div className="relative z-10 text-center my-auto px-4">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-300/30 text-amber-200 text-xs font-serif mb-4">
+              {/* Center Content */}
+              <div className="relative z-10 text-center my-auto px-2 sm:px-4">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-xs border border-amber-300/30 text-amber-200 text-xs font-serif mb-4 shadow-sm">
                   <Star className="w-3 h-3 fill-amber-300 text-amber-300" />
                   Para mi lectora favorita
                   <Star className="w-3 h-3 fill-amber-300 text-amber-300" />
                 </div>
 
-                <h1 className="font-playfair text-2xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-100 via-amber-200 to-amber-400 bg-clip-text text-transparent drop-shadow-md tracking-wide leading-tight">
+                <h1 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-100 via-amber-200 to-amber-400 bg-clip-text text-transparent drop-shadow-lg tracking-wide leading-tight">
                   {currentBook.title}
                 </h1>
 
@@ -647,50 +712,20 @@ export default function BookCard3D() {
                   Para mi Pastelito
                 </p>
 
-                <p className="font-lora text-xs sm:text-sm text-slate-300/80 italic max-w-sm mx-auto mt-3 leading-relaxed">
+                <p className="font-lora text-xs sm:text-sm text-slate-200/90 italic max-w-sm mx-auto mt-3 leading-relaxed">
                   &ldquo;{currentBook.subtitle}&rdquo;
                 </p>
               </div>
 
+              {/* Footer CTA */}
               <div className="relative z-10 flex flex-col items-center">
-                <div className="flex items-center gap-2 text-xs font-medium text-amber-200 bg-white/10 hover:bg-white/20 backdrop-blur-md px-4 py-2 rounded-full border border-amber-300/40 shadow-lg animate-gentle-pulse">
+                <div className="flex items-center gap-2 text-xs font-medium text-amber-200 bg-white/15 hover:bg-white/25 backdrop-blur-md px-4 py-2 rounded-full border border-amber-300/40 shadow-lg animate-gentle-pulse">
                   <BookOpen className="w-4 h-4 text-amber-300" />
                   <span>Haz clic para abrir la tarjeta</span>
                 </div>
               </div>
-            </div>
-
-            {/* INSIDE BACKFACE OF COVER */}
-            <div
-              className="absolute inset-0 w-full h-full rounded-2xl bg-gradient-to-br from-[#1e142e] to-[#0f172a] p-6 flex flex-col justify-between border-2 border-amber-400/30 text-slate-200"
-              style={{
-                transform: "rotateY(180deg)",
-                backfaceVisibility: "hidden",
-                WebkitBackfaceVisibility: "hidden",
-              }}
-            >
-              <div className="flex items-center justify-between text-xs text-amber-300/70 font-serif">
-                <span>Guardas del Libro</span>
-                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-              </div>
-
-              <div className="text-center my-auto p-4">
-                <div className="w-12 h-12 mx-auto rounded-full bg-rose-500/20 border border-rose-400/40 flex items-center justify-center mb-3">
-                  <Heart className="w-6 h-6 text-rose-400 fill-rose-400" />
-                </div>
-                <p className="font-playfair text-lg text-amber-100 font-semibold">
-                  Nuestra propia historia
-                </p>
-                <p className="text-xs text-slate-300/70 font-lora italic mt-1">
-                  Escrita con cada risa, cada abrazo y cada página compartida.
-                </p>
-              </div>
-
-              <div className="text-center text-[11px] text-amber-300/50 font-serif">
-                Toca de nuevo para cerrar
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          )}
         </motion.div>
       </div>
 
@@ -734,7 +769,7 @@ export default function BookCard3D() {
       </AnimatePresence>
 
       {/* Controls Bar */}
-      <div className="mt-6 flex flex-wrap items-center justify-center gap-3 z-20">
+      <div className="mt-5 flex flex-wrap items-center justify-center gap-2.5 z-20">
         <button
           onClick={handleToggleOpen}
           className="flex items-center gap-2 px-4 py-2 rounded-full bg-rose-600 hover:bg-rose-500 text-white font-medium text-xs sm:text-sm shadow-lg shadow-rose-900/40 transition-all active:scale-95"
